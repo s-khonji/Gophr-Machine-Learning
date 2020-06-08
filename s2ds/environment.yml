@@ -1,0 +1,33 @@
+# conda env create|update -f environment.yml
+name: s2ds
+channels:
+  - defaults
+dependencies:
+  # we start with the current versions at the date of env creation (2020-04-01),
+  # fix minor versions and allow patches for future updates,
+  # see https://semver.org/
+  # we only list packages we're going to use, dependencies of these packages
+  # are installed by automatically pip
+- python=3.7
+- pip=20.0.*
+- fiona=1.8.*  # required for geopandas (on-the-fly compilation in pip fails, fallback to conda wheels)
+- pip:
+  - '--editable=.'
+  - mysql-connector==2.2.*
+  - pyarrow==0.16.*
+  - numpy==1.18.*
+  - pandas==1.0.*
+  - scipy==1.4.*
+  - scikit-learn==0.22.*
+  - jupyter==1.0.*
+  - matplotlib==3.2.*
+  - seaborn==0.10.*
+  - tqdm==4.44.*
+  - gmplot==1.2.*
+  - geopandas==0.7.*
+  - geopy==1.21.*
+  - descartes==1.1.*
+  - imbalanced-learn==0.6.*
+  - cmake==3.17.*
+  - xgboost==1.0.*
+
